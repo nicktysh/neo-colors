@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elementor-based Bootstrap 5 Theme</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600&family=Roboto+Slab:wght@400;600&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            /* Primary Colors */
+            --bs-primary: #B88B2D;
+            --bs-secondary: #1B3663;
+            --bs-text-color: #7A7A7A;
+            --bs-accent: #F4C051;
+            --bs-white: #FFFFFF;
+            --bs-light-gray: #B3AEA4;
+
+            /* Semantic Colors */
+            --bs-success: #65937A;
+            --bs-info: #6891AE;
+            --bs-warning: #F4C051;
+            --bs-danger: #BA6870;
+            --bs-light: #DFB9BD;
+            --bs-dark: #53655E;
+
+            /* Color Palettes */
+            --purple: #88729D;
+            --light-purple: #C2B7CD;
+            --green: #65937A;
+            --light-green: #AAC5B6;
+            --dark-green: #8FA39B;
+            --pale-green: #C7D1CD;
+            --blue: #6891AE;
+            --light-blue: #AFC5D4;
+            --pink: #BA6870;
+            --light-pink: #DFB9BD;
+
+            /* Body */
+            --bs-body-bg: var(--bs-white);
+            --bs-body-color: var(--bs-text-color);
+
+            /* RGB Values */
+            --bs-primary-rgb: 184, 139, 45;
+            --bs-secondary-rgb: 27, 54, 99;
+            --bs-success-rgb: 101, 147, 122;
+            --bs-info-rgb: 104, 145, 174;
+            --bs-warning-rgb: 244, 192, 81;
+            --bs-danger-rgb: 186, 104, 112;
+            --bs-light-rgb: 223, 185, 189;
+            --bs-dark-rgb: 83, 101, 94;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 400;
+            color: #7A7A7A;
+            background-color: #FFFFFF;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Roboto Slab', serif;
+            font-weight: 600;
+            color: #1B3663;
+        }
+
+        /* Bootstrap Overrides */
+        .bg-primary {
+            background-color: var(--bs-primary) !important;
+        }
+
+        .bg-secondary {
+            background-color: var(--bs-secondary) !important;
+        }
+
+        .bg-success {
+            background-color: var(--bs-success) !important;
+        }
+
+        .bg-info {
+            background-color: var(--bs-info) !important;
+        }
+
+        .bg-warning {
+            background-color: var(--bs-warning) !important;
+        }
+
+        .bg-danger {
+            background-color: var(--bs-danger) !important;
+        }
+
+        .bg-light {
+            background-color: var(--bs-light) !important;
+        }
+
+        .bg-dark {
+            background-color: var(--bs-dark) !important;
+        }
+
+        .text-primary {
+            color: var(--bs-primary) !important;
+        }
+
+        .text-secondary {
+            color: var(--bs-secondary) !important;
+        }
+
+        .btn-primary {
+            background-color: var(--bs-primary);
+            border-color: var(--bs-primary);
+        }
+
+        .btn-secondary {
+            background-color: var(--bs-secondary);
+            border-color: var(--bs-secondary);
+        }
+
+        .btn-accent {
+            background-color: var(--bs-accent);
+            border-color: var(--bs-accent);
+            color: #212529;
+        }
+
+        .btn-outline-primary {
+            color: var(--bs-primary);
+            border-color: var(--bs-primary);
+        }
+
+        .btn-outline-secondary {
+            color: var(--bs-secondary);
+            border-color: var(--bs-secondary);
+        }
+
+        .card {
+            border-color: rgba(222, 226, 230, 0.75);
+            box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+        }
+
+        .card-header {
+            background-color: rgba(27, 54, 99, 0.05);
+        }
+
+        /* Custom Classes */
+        .color-box {
+            width: 100%;
+            height: 80px;
+            border-radius: 0.25rem;
+            margin-bottom: 0.5rem;
+            box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+        }
+
+        .color-box-sm {
+            width: 100%;
+            height: 60px;
+            border-radius: 0.25rem;
+            margin-bottom: 0.5rem;
+            box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+        }
+
+        .font-sm {
+            font-size: 12px;
+            line-height: 2em;
+        }
+
+        .font-lg {
+            font-size: 18px;
+            line-height: 1em;
+        }
+
+        .section-title {
+            position: relative;
+            margin-bottom: 2rem;
+            padding-bottom: 0.5rem;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            height: 3px;
+            width: 80px;
+            background-color: var(--bs-primary);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container py-5">
+        <header class="mb-5">
+            <h1 class="display-4 text-primary">Elementor <span class="text-secondary">Bootstrap</span> Theme</h1>
+            <p class="lead">A complete Bootstrap 5 theme based on Elementor variables</p>
+        </header>
+
+        <!-- Primary Colors -->
+        <section class="mb-5">
+            <h2 class="section-title">Primary Colors</h2>
+            <div class="row g-4">
+                <div class="col-6 col-md-3">
+                    <div class="color-box bg-primary"></div>
+                    <h4 class="h6">Primary</h4>
+                    <p class="small text-muted">#B88B2D</p>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="color-box bg-secondary"></div>
+                    <h4 class="h6">Secondary</h4>
+                    <p class="small text-muted">#1B3663</p>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="color-box"
+                        style="background-color: #7A7A7A; color: white; display: flex; align-items: center; justify-content: center;">
+                        <span>Text</span>
+                    </div>
+                    <h4 class="h6">Text Color</h4>
+                    <p class="small text-muted">#7A7A7A</p>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="color-box" style="background-color: #F4C051;"></div>
+                    <h4 class="h6">Accent</h4>
+                    <p class="small text-muted">#F4C051</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Semantic Colors -->
+        <section class="mb-5">
+            <h2 class="section-title">Semantic Colors</h2>
+            <div class="row g-4">
+                <div class="col-6 col-md-3">
+                    <div class="color-box bg-success"></div>
+                    <h4 class="h6">Success</h4>
+                    <p class="small text-muted">#65937A</p>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="color-box bg-info"></div>
+                    <h4 class="h6">Info</h4>
+                    <p class="small text-muted">#6891AE</p>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="color-box bg-warning"></div>
+                    <h4 class="h6">Warning</h4>
+                    <p class="small text-muted">#F4C051</p>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="color-box bg-danger"></div>
+                    <h4 class="h6">Danger</h4>
+                    <p class="small text-muted">#BA6870</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Additional Color Palettes -->
+        <section class="mb-5">
+            <h2 class="section-title">Additional Color Palettes</h2>
+
+            <div class="row mb-4">
+                <div class="col-12">
+                    <h3 class="h5 mb-3">Purple Palette</h3>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="color-box-sm" style="background-color: #88729D;"></div>
+                    <h4 class="h6">Purple</h4>
+                    <p class="small text-muted">#88729D</p>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="color-box-sm" style="background-color: #C2B7CD;"></div>
+                    <h4 class="h6">Light Purple</h4>
+                    <p class="small text-muted">#C2B7CD</p>
+                </div>
+            </div>
+
+            <div class="row mb-4">
+                <div class="col-12">
+                    <h3 class="h5 mb-3">Green Palette</h3>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="color-box-sm" style="background-color: #65937A;"></div>
+                    <h4 class="h6">Green</h4>
+                    <p class="small text-muted">#65937A</p>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="color-box-sm" style="background-color: #AAC5B6;"></div>
+                    <h4 class="h6">Light Green</h4>
+                    <p class="small text-muted">#AAC5B6</p>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="color-box-sm" style="background-color: #8FA39B;"></div>
+                    <h4 class="h6">Dark Green</h4>
+                    <p class="small text-muted">#8FA39B</p>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="color-box-sm" style="background-color: #C7D1CD;"></div>
+                    <h4 class="h6">Pale Green</h4>
+                    <p class="small text-muted">#C7D1CD</p>
+                </div>
+            </div>
+
+            <div class="row mb-4">
+                <div class="col-12">
+                    <h3 class="h5 mb-3">Blue Palette</h3>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="color-box-sm" style="background-color: #6891AE;"></div>
+                    <h4 class="h6">Blue</h4>
+                    <p class="small text-muted">#6891AE</p>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="color-box-sm" style="background-color: #AFC5D4;"></div>
+                    <h4 class="h6">Light Blue</h4>
+                    <p class="small text-muted">#AFC5D4</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <h3 class="h5 mb-3">Pink/Red Palette</h3>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="color-box-sm" style="background-color: #BA6870;"></div>
+                    <h4 class="h6">Pink</h4>
+                    <p class="small text-muted">#BA6870</p>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="color-box-sm" style="background-color: #DFB9BD;"></div>
+                    <h4 class="h6">Light Pink</h4>
+                    <p class="small text-muted">#DFB9BD</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Typography -->
+        <section class="mb-5">
+            <h2 class="section-title">Typography</h2>
+
+            <div class="row mb-4">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="h5 mb-0">Headings</h3>
+                        </div>
+                        <div class="card-body">
+                            <h1>Heading 1</h1>
+                            <h2>Heading 2</h2>
+                            <h3>Heading 3</h3>
+                            <h4>Heading 4</h4>
+                            <h5>Heading 5</h5>
+                            <h6>Heading 6</h6>
+                        </div>
+                        <div class="card-footer text-muted">
+                            <p class="mb-0"><strong>Font:</strong> Roboto Slab, Weight: 600</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 mt-4 mt-md-0">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="h5 mb-0">Text Styles</h3>
+                        </div>
+                        <div class="card-body">
+                            <p>This is the default paragraph text with <a href="#">a link</a> and <strong>strong
+                                    text</strong>.</p>
+                            <p class="lead">This is a lead paragraph that stands out from regular paragraphs.</p>
+                            <p class="font-sm">This is small text with 12px font size and 2em line height.</p>
+                            <p class="font-lg">This is large text with 18px font size and 1em line height.</p>
+                            <p class="text-primary">Primary colored text</p>
+                            <p class="text-secondary">Secondary colored text</p>
+                        </div>
+                        <div class="card-footer text-muted">
+                            <p class="mb-0"><strong>Font:</strong> Roboto, Weight: 400</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Components -->
+        <section class="mb-5">
+            <h2 class="section-title">Components</h2>
+
+            <!-- Buttons -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h3 class="h5 mb-0">Buttons</h3>
+                </div>
+                <div class="card-body">
+                    <h4 class="h6 mb-3">Standard Buttons</h4>
+                    <div class="mb-4">
+                        <button class="btn btn-primary me-2 mb-2">Primary</button>
+                        <button class="btn btn-secondary me-2 mb-2">Secondary</button>
+                        <button class="btn btn-success me-2 mb-2">Success</button>
+                        <button class="btn btn-info me-2 mb-2">Info</button>
+                        <button class="btn btn-warning me-2 mb-2">Warning</button>
+                        <button class="btn btn-danger me-2 mb-2">Danger</button>
+                        <button class="btn btn-accent me-2 mb-2">Accent</button>
+                        <button class="btn btn-light me-2 mb-2">Light</button>
+                        <button class="btn btn-dark me-2 mb-2">Dark</button>
+                    </div>
+
+                    <h4 class="h6 mb-3">Outline Buttons</h4>
+                    <div>
+                        <button class="btn btn-outline-primary me-2 mb-2">Primary</button>
+                        <button class="btn btn-outline-secondary me-2 mb-2">Secondary</button>
+                        <button class="btn btn-outline-success me-2 mb-2">Success</button>
+                        <button class="btn btn-outline-info me-2 mb-2">Info</button>
+                        <button class="btn btn-outline-warning me-2 mb-2">Warning</button>
+                        <button class="btn btn-outline-danger me-2 mb-2">Danger</button>
+                        <button class="btn btn-outline-dark me-2 mb-2">Dark</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Alerts -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h3 class="h5 mb-0">Alerts</h3>
+                </div>
+                <div class="card-body">
+                    <div class="alert alert-primary mb-2">This is a primary alert</div>
+                    <div class="alert alert-secondary mb-2">This is a secondary alert</div>
+                    <div class="alert alert-success mb-2">This is a success alert</div>
+                    <div class="alert alert-danger mb-2">This is a danger alert</div>
+                    <div class="alert alert-warning mb-2">This is a warning alert</div>
+                    <div class="alert alert-info mb-2">This is an info alert</div>
+                </div>
+            </div>
+
+            <!-- Forms -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h3 class="h5 mb-0">Forms</h3>
+                </div>
+                <div class="card-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="exampleInput" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="exampleInput" placeholder="name@example.com">
+                            <div class="form-text">We'll never share your email with anyone else.</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleTextarea" class="form-label">Example textarea</label>
+                            <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleSelect" class="form-label">Example select</label>
+                            <select class="form-select" id="exampleSelect">
+                                <option>Option 1</option>
+                                <option>Option 2</option>
+                                <option>Option 3</option>
+                                <option>Option 4</option>
+                                <option>Option 5</option>
+                            </select>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck">
+                            <label class="form-check-label" for="exampleCheck">Check me out</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Card Examples -->
+        <section>
+            <h2 class="section-title">Card Examples</h2>
+
+            <div class="row">
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <div class="card h-100">
+                        <div class="card-header bg-primary text-white">
+                            <h3 class="h5 mb-0">Primary Card</h3>
+                        </div>
+                        <div class="card-body">
+                            <p>This card uses the primary gold color for its header.</p>
+                            <p class="mb-0">The content is styled with the default text color from Elementor.</p>
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn btn-sm btn-outline-primary">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <div class="card h-100">
+                        <div class="card-header bg-secondary text-white">
+                            <h3 class="h5 mb-0">Secondary Card</h3>
+                        </div>
+                        <div class="card-body">
+                            <p>This card uses the secondary navy color for its header.</p>
+                            <p class="mb-0">The content is styled with the default text color from Elementor.</p>
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn btn-sm btn-outline-secondary">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card h-100" style="border-color: #F4C051;">
+                        <div class="card-header" style="background-color: #F4C051;">
+                            <h3 class="h5 mb-0">Accent Card</h3>
+                        </div>
+                        <div class="card-body">
+                            <p>This card uses the accent color (#F4C051) for its header and border.</p>
+                            <p class="mb-0">The light gold color creates a warm, inviting appearance.</p>
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn btn-sm btn-accent">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Color Combination Examples -->
+        <section class="my-5">
+            <h2 class="section-title">Color Combination Examples</h2>
+
+            <div class="row g-4">
+                <!-- Purple Palette Example -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100" style="border-color: #88729D;">
+                        <div class="card-header" style="background-color: #88729D; color: white;">
+                            <h3 class="h5 mb-0">Purple Theme</h3>
+                        </div>
+                        <div class="card-body">
+                            <div
+                                style="background-color: #C2B7CD; padding: 15px; border-radius: 0.25rem; margin-bottom: 15px;">
+                                <p class="mb-0" style="color: #53655E;">This box demonstrates the light purple
+                                    background with dark green text.</p>
+                            </div>
+                            <p>The purple palette works well with gold accents.</p>
+                            <p class="mb-0" style="color: #88729D;">This text uses the purple as a text color.</p>
+                        </div>
+                        <div class="card-footer d-flex justify-content-between align-items-center">
+                            <button class="btn btn-sm" style="background-color: #88729D; color: white;">Action</button>
+                            <span style="color: #B88B2D;">Gold accent text</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Green Palette Example -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100" style="border-color: #65937A;">
+                        <div class="card-header" style="background-color: #65937A; color: white;">
+                            <h3 class="h5 mb-0">Green Theme</h3>
+                        </div>
+                        <div class="card-body">
+                            <div
+                                style="background-color: #AAC5B6; padding: 15px; border-radius: 0.25rem; margin-bottom: 15px;">
+                                <p class="mb-0" style="color: #1B3663;">This box demonstrates the light green background
+                                    with navy blue text.</p>
+                            </div>
+                            <p>The green palette creates a calming, natural aesthetic.</p>
+                            <p class="mb-0" style="color: #65937A;">This text uses the green as a text color.</p>
+                        </div>
+                        <div class="card-footer d-flex justify-content-between align-items-center">
+                            <button class="btn btn-sm" style="background-color: #65937A; color: white;">Action</button>
+                            <span style="color: #F4C051;">Accent gold text</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Blue Palette Example -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100" style="border-color: #6891AE;">
+                        <div class="card-header" style="background-color: #6891AE; color: white;">
+                            <h3 class="h5 mb-0">Blue Theme</h3>
+                        </div>
+                        <div class="card-body">
+                            <div
+                                style="background-color: #AFC5D4; padding: 15px; border-radius: 0.25rem; margin-bottom: 15px;">
+                                <p class="mb-0" style="color: #BA6870;">This box demonstrates the light blue background
+                                    with pink accent text.</p>
+                            </div>
+                            <p>The blue palette creates a professional, trustworthy appearance.</p>
+                            <p class="mb-0" style="color: #6891AE;">This text uses the blue as a text color.</p>
+                        </div>
+                        <div class="card-footer d-flex justify-content-between align-items-center">
+                            <button class="btn btn-sm" style="background-color: #6891AE; color: white;">Action</button>
+                            <span style="color: #B88B2D;">Gold accent text</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="mt-5 pt-4 border-top">
+            <div class="row">
+                <div class="col-md-6">
+                    <h4 class="h5 text-primary">Elementor Bootstrap Theme</h4>
+                    <p class="text-muted">A complete Bootstrap 5 theme based on Elementor variables.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <div class="mb-2">
+                        <button class="btn btn-sm btn-primary me-2">Primary</button>
+                        <button class="btn btn-sm btn-secondary me-2">Secondary</button>
+                        <button class="btn btn-sm btn-accent">Accent</button>
+                    </div>
+                    <p class="small text-muted">© 2024 Theme Demo</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
